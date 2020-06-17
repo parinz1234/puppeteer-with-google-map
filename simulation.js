@@ -26,9 +26,10 @@ const puppeteer = require('puppeteer');
     // - get element to trigger compute
     await endPointElementHandler.type(String.fromCharCode(13));
 
+    // waiting for selector
     await page.waitForSelector('.section-directions-trip-distance.section-directions-trip-secondary-text');
     const distanceElementHandler = await page.$('.section-directions-trip-distance.section-directions-trip-secondary-text');
-    const content = await distanceElementHandler.evaluate(node => node.lastElementChild.innerHTML);
-    console.log(`Distance is: ${content}`);
+    const distanceText = await distanceElementHandler.evaluate(node => node.lastElementChild.textContent);
+    console.log(`Distance is: ${distanceText}`);
     await browser.close();
 })();
