@@ -5,6 +5,7 @@ const puppeteer = require('puppeteer');
         headless: true
     });
     const page = await browser.newPage();
+    // await page.setCacheEnabled(false);
     await page.goto('https://www.google.co.th/maps/dir///data=!4m2!4m1!3e0');
     const pickUpLocation = { lat: 14.604486, lng: 100.24556 };
     const dropOffLocation = { lat: 14.5918192, lng: 100.271392 }
